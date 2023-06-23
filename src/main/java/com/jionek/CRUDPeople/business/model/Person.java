@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Data
 @AllArgsConstructor
@@ -15,4 +17,9 @@ public class Person {
     private String lastName;
     private LocalDate dob;
     private BigDecimal salary;
+
+    public String getFormattedDob(){
+        return DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.US).format(dob);
+    }
 }
+

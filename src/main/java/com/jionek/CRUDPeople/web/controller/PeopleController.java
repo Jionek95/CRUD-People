@@ -23,7 +23,7 @@ public class PeopleController {
                 new Person(40L, "Bobby", "Black", LocalDate.of(1980, 5, 21), new BigDecimal(50000)),
                 new Person(50L, "Kim", "Knot", LocalDate.of(1990, 6, 20), new BigDecimal(60000))
         );
-        model.addAttribute("people", groupOfPeople);
+        model.addAttribute("groupOfPeople", groupOfPeople);
 
 
         return "people";

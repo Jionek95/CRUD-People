@@ -1,23 +1,25 @@
 package com.jionek.CRUDPeople.web.formatter;
 
 import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+@Component
 public class LocalDateFormatter implements Formatter<LocalDate>{
 
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
 
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
-        return null;
+        return LocalDate.parse(text, dateTimeFormatter.localizedBy(Locale.US));
     }
 
     @Override
-    public String print(LocalDate object, Locale locale) {
-        return null;
+    public String print(LocalDate date, Locale locale) {
+        return dateTimeFormatter.localizedBy(Locale.US).format(date);
     }
 }

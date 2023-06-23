@@ -11,11 +11,14 @@
 
 <body>
 <h2>Here are a few people:</h2>
+
 <ul>
     <li th:each="person : ${groupOfPeople}" th:text="${person}">Junk Person appears when there's no data</li>
 </ul>
+
 <div class="col-8 mx-auto">
     <table class="table">
+
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -25,12 +28,14 @@
             <th scope="col">Salary</th>
         </tr>
         </thead>
+
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+        <tr th:each="person : ${groupOfPeople}">
+            <th scope="row" th:text="${person.id}">1</th>
+            <td th:text="${person.lastName}">Mark</td>
+            <td th:text="${person.firstName}">Otto</td>
+            <td th:text="${person.dob}">@mdo</td>
+            <td th:text="${person.salary}">@mdo</td>
         </tr>
         <tr>
             <th scope="row">2</th>

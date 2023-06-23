@@ -18,8 +18,5 @@ public class Person {
     private LocalDate dob;
     private BigDecimal salary;
 
-    public String getFormattedDob(){
-        return DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.US).format(dob);
-    }
 }
 

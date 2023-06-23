@@ -6,12 +6,9 @@
 </head>
 <body>
 
+<h2>Here are a few people:</h2>
 <ul>
-    <h2>Here are a few people:</h2>
-    <li>
-        Junk Person
-    </li>
-
+    <li th:each="person : ${groupOfPeople}" th:text="${person}">Junk Person appears when there's no data</li>
 </ul>
 
 </body>

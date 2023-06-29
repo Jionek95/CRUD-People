@@ -16,12 +16,12 @@ public class LocalDateFormatter implements Formatter<LocalDate>{
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
 //        return LocalDate.parse(text, dateTimeFormatter);
-        return LocalDate.parse(text, dateTimeFormatter.localizedBy(locale));
+        return LocalDate.parse(text, dateTimeFormatter.localizedBy(Locale.US));
     }
 
     @Override
     public String print(LocalDate date, Locale locale) {
 //        return dateTimeFormatter.format(date);
-        return dateTimeFormatter.localizedBy(locale).format(date);
+        return dateTimeFormatter.localizedBy(Locale.US).format(date);
     }
 }

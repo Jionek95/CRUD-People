@@ -11,7 +11,6 @@ import java.util.List;
 
 @Component
 public class PersonDataLoader implements ApplicationRunner {
-
     private PersonRepository personRepository;
 
     public PersonDataLoader(PersonRepository personRepository) {

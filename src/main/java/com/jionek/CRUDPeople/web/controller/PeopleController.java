@@ -18,13 +18,13 @@ public class PeopleController {
         this.personRepository = personRepository;
     }
 
-    @ModelAttribute("people")
+    @ModelAttribute("groupOfPeople")
     public Iterable<Person> getPeople(){
         return personRepository.findAll();
     }
 
     @GetMapping
-    public String showPeoplePage(Model model){
+    public String showPeoplePage(){
         // THIS LIST IS CREATED IN PersonDataLoader class //
 //        List<Person> groupOfPeople = List.of(
 //                new Person(10L, "Jake", "Snake", LocalDate.of(1950, 2, 24), new BigDecimal(20000)),

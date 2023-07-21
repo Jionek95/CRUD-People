@@ -1,14 +1,12 @@
 package com.jionek.CRUDPeople.web.controller;
 
 import com.jionek.CRUDPeople.business.model.Person;
+import com.jionek.CRUDPeople.data.PersonRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
 
 @Controller
 @RequestMapping("/people")

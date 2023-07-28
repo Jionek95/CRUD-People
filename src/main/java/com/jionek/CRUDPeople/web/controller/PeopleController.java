@@ -22,6 +22,11 @@ public class PeopleController {
         return personRepository.findAll();
     }
 
+    @ModelAttribute("persona")
+    public Person getPerson(){
+        return new Person();
+    }
+
     @GetMapping
     public String showPeoplePage(){
         // THIS LIST IS CREATED IN PersonDataLoader class //

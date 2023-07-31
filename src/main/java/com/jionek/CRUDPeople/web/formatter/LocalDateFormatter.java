@@ -15,13 +15,11 @@ public class LocalDateFormatter implements Formatter<LocalDate>{
 
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
-//        return LocalDate.parse(text, dateTimeFormatter);
-        return LocalDate.parse(text, dateTimeFormatter.localizedBy(Locale.US));
+        return LocalDate.parse(text, DateTimeFormatter.ISO_LOCAL_DATE.localizedBy(Locale.US));
     }
 
     @Override
     public String print(LocalDate date, Locale locale) {
-//        return dateTimeFormatter.format(date);
         return dateTimeFormatter.localizedBy(Locale.US).format(date);
     }
 }

@@ -31,7 +31,7 @@
         </thead>
 
         <tbody>
-        <tr>
+        <tr th:if="${#lists.isEmpty(groupOfPeople)}">
             <td colspan="6" class="text-center">No Data</td>
         </tr>
 

@@ -43,4 +43,11 @@ public class PeopleController {
 //        model.addAttribute("groupOfPeople", groupOfPeople);
         return "people";
     }
+
+    @PostMapping
+    public String savePerson(Person person){
+        System.out.println(person);
+        personRepository.save(person);
+        return "redirect:people";
+    }
 }

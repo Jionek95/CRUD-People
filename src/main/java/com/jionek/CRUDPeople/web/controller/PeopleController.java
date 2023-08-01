@@ -4,6 +4,7 @@ import com.jionek.CRUDPeople.business.model.Person;
 import com.jionek.CRUDPeople.data.PersonRepository;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +50,10 @@ public class PeopleController {
     @PostMapping
     public String savePerson(@Valid Person person, Errors errors){
         System.out.println(person);
-        personRepository.save(person);
-        return "redirect:people";
+        if (!errors.hasErrors()) {
+            personRepository.save(person);
+            return "redirect:people";
+        }
+        return "people";
     }
 }

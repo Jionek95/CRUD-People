@@ -22,8 +22,8 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">LastName</th>
             <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
             <th scope="col">DOB</th>
             <th scope="col">Salary</th>
             <th scope="col">Email</th>
@@ -37,8 +37,8 @@
 
         <tr th:each="person : ${groupOfPeople}">
             <th scope="row" th:text="${person.id}">1</th>
-            <td th:text="${person.lastName}">Mark</td>
-            <td th:text="${person.firstName}">Otto</td>
+            <td th:text="${person.firstName}">Mark</td>
+            <td th:text="${person.lastName}">Otto</td>
             <td th:text="${{person.dob}}">@mdo</td>
             <td th:text="${{person.salary}}">@mdo</td>
             <td th:text="${person.email}">Mark</td>

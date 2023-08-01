@@ -16,8 +16,9 @@
 <!--    <li th:each="person : ${groupOfPeople}" th:text="${person}">Junk Person appears when there's no data</li>-->
 <!--</ul>-->
 
-<div class="col-8 mx-auto">
-    <table class="table table-bordered table-sm mt-4">
+<div class="col-lg-8 col-md-9 col-sm-10 mx-auto mt-4 my-5">
+    <h2>People List</h2>
+    <table class="table table-bordered table-sm mt-3">
 
         <thead>
         <tr>
@@ -46,6 +47,7 @@
 
     </table>
 
+    <h4>Add Person</h4>
     <form th:object="${persona}" method="post">
         <div class="form-group">
             <label for="firstName" class="font-weight-bold">First Name</label>

@@ -3,6 +3,9 @@ package com.jionek.CRUDPeople.business.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +22,16 @@ public class Person {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotEmpty(message = "First name cannot be empty")
     private String firstName;
+    @NotEmpty(message = "Last name cannot be empty")
     private String lastName;
+    @Past(message = "Date of birth must be in past")
     private LocalDate dob;
+
     private BigDecimal salary;
+    @Email(message = "Email must be valid")
     private String email;
 
 }

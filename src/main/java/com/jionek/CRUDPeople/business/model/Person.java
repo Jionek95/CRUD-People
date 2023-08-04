@@ -27,7 +27,7 @@ public class Person {
     private String firstName;
     @NotEmpty(message = "Last name cannot be empty")
     private String lastName;
-    @Past(message = "Date of birth must be in past")
+    @Past(message = "Date of birth must be in the past")
     private LocalDate dob;
 
     private BigDecimal salary;

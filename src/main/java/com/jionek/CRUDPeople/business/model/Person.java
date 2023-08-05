@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,10 +29,12 @@ public class Person {
     @NotEmpty(message = "Last name cannot be empty")
     private String lastName;
     @Past(message = "Date of birth must be in the past")
+    @NotNull(message = "Date of birth cannot be null")
     private LocalDate dob;
 
     private BigDecimal salary;
     @Email(message = "Email must be valid")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
 }

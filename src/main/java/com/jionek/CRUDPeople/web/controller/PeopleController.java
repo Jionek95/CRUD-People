@@ -25,7 +25,7 @@ public class PeopleController {
         return personRepository.findAll();
     }
 
-    @ModelAttribute("persona")
+    @ModelAttribute("person")
     public Person getPerson(){
         return new Person();
     }

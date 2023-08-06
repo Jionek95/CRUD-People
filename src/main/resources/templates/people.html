@@ -20,7 +20,7 @@
             <th scope="col">LastName</th>
             <th scope="col">DOB</th>
             <th scope="col">Salary</th>
-            <th scope="col">Email</th>
+            <th scope="col" class="d-sm-none">Email</th>
         </tr>
         </thead>
 
@@ -35,7 +35,7 @@
             <td th:text="${persona.lastName}">Otto</td>
             <td th:text="${{persona.dob}}">@mdo</td>
             <td th:text="${{persona.salary}}">@mdo</td>
-            <td th:text="${persona.email}">Mark</td>
+            <td th:text="${persona.email}" class="d-sm-none">Mark</td>
         </tbody>
 
     </table>

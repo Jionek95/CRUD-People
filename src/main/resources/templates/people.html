@@ -12,9 +12,9 @@
 <div class="col-lg-8 col-md-9 col-sm-10 mx-auto mt-4 my-5">
     <h2>People List</h2>
     <table class="table table-bordered table-sm mt-3">
-
         <thead>
         <tr>
+            <th scope="col">Select</th>
             <th scope="col">ID</th>
             <th scope="col">FirstName</th>
             <th scope="col">LastName</th>
@@ -30,6 +30,7 @@
         </tr>
 
         <tr th:each="persona : ${groupOfPeople}">
+            <td align="center"> <input type="checkbox"> </td>
             <th scope="row" th:text="${persona.id}">1</th>
             <td th:text="${persona.firstName}">Mark</td>
             <td th:text="${persona.lastName}">Otto</td>

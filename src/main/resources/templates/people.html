@@ -29,17 +29,18 @@
             <td colspan="6" class="text-center">No Data</td>
         </tr>
 
-        <tr th:each="persona : ${groupOfPeople}">
-            <td align="center"> <input type="checkbox"> </td>
-            <th scope="row" th:text="${persona.id}">1</th>
-            <td th:text="${persona.firstName}">Mark</td>
-            <td th:text="${persona.lastName}">Otto</td>
-            <td th:text="${{persona.dob}}">@mdo</td>
-            <td th:text="${{persona.salary}}">@mdo</td>
-            <td th:text="${persona.email}" class="d-sm-none">Mark</td>
-        </tbody>
-
-    </table>
+            <tr th:each="persona : ${groupOfPeople}">
+                <td> <input type="checkbox" name="selections" th:value="${persona.id}"> </td>
+                <th scope="row" th:text="${persona.id}">1</th>
+                <td th:text="${persona.firstName}">Mark</td>
+                <td th:text="${persona.lastName}">Otto</td>
+                <td th:text="${{persona.dob}}">@mdo</td>
+                <td th:text="${{persona.salary}}">@mdo</td>
+                <td th:text="${persona.email}" class="d-sm-none">Mark</td>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-danger btn-sm mb-5">Delete Person</button>
+    </form>
 
     <h4>Add Person</h4>
     <form th:object="${person}" method="post" novalidate>

@@ -5,12 +5,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
+@Component
 public class PersonDataLoader implements ApplicationRunner {
     private PersonRepository personRepository;
 

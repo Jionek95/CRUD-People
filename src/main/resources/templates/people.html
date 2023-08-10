@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 
-<div class="col-md-8 col-md-9 col-sm-10 mx-auto mt-4 mb-5">
+<div class="col-md-8 col-md-9 col-sm-11 mx-auto mt-4 mb-5">
     <h2>People List</h2>
     <form method="post">
         <table class="table table-bordered table-sm my-2">
@@ -32,7 +32,7 @@
 
             <tr th:each="persona : ${groupOfPeople}">
                 <td>
-                    <input class="form-check" type="checkbox" name="selections" th:value="${persona.id}">
+                    <input class="form-check" type="checkbox" name="checkboxes" th:value="${persona.id}">
                 </td>
                 <th scope="row" th:text="${persona.id}">1</th>
                 <td th:text="${persona.firstName}">Mark</td>

@@ -42,8 +42,8 @@
                 <td th:text="${persona.email}" >Mark</td>
             </tbody>
         </table>
-        <button type="button" class="btn btn-danger btn-sm mb-5">Delete Person</button>
-<!--    </form>-->
+        <button type="submit" name="deleteOperation" value="true" class="btn btn-danger btn-sm mb-5">Delete Person</button>
+    </form>
 
     <h4>Add Person</h4>
     <form th:object="${person}" method="post" novalidate>

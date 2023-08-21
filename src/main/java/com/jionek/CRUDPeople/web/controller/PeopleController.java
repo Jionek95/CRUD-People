@@ -62,6 +62,6 @@ public class PeopleController {
             Optional<Person> personToEdit = personRepository.findById(selections.get().get(0));// for multiple chosen people option, we take first
             model.addAttribute("person", personToEdit);
         }
-        return "redirect:people";
+        return "people";
     }
 }

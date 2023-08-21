@@ -53,4 +53,14 @@ public class PeopleController {
         }
         return "redirect:people";
     }
+
+    @PostMapping(params = "editOperation=true")
+    public String editPerson(@RequestParam("checkboxes") Optional<List<Long>> selections){
+        System.out.println(selections);
+        if (selections.isPresent()) {
+            Optional<Person> personToEdit = personRepository.findById(selections.get().get(0));// for multiple chosen people option, we take first
+//            model.addAttribute("person", personToEdit);
+        }
+        return "redirect:people";
+    }
 }

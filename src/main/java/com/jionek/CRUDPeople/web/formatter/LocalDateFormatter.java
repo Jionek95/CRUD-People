@@ -11,15 +11,15 @@ import java.util.Locale;
 @Component
 public class LocalDateFormatter implements Formatter<LocalDate>{
 
-    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE.localizedBy(Locale.US);
 
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
-        return LocalDate.parse(text, DateTimeFormatter.ISO_LOCAL_DATE.localizedBy(Locale.US));
+        return LocalDate.parse(text, dateTimeFormatter);
     }
 
     @Override
     public String print(LocalDate date, Locale locale) {
-        return dateTimeFormatter.localizedBy(Locale.US).format(date);
+        return dateTimeFormatter.format(date);
     }
 }

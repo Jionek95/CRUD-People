@@ -4,6 +4,7 @@ import com.jionek.CRUDPeople.business.model.Person;
 import com.jionek.CRUDPeople.data.PersonRepository;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,11 +56,11 @@ public class PeopleController {
     }
 
     @PostMapping(params = "editOperation=true")
-    public String editPerson(@RequestParam("checkboxes") Optional<List<Long>> selections){
+    public String editPerson(@RequestParam("checkboxes") Optional<List<Long>> selections, Model model){
         System.out.println(selections);
         if (selections.isPresent()) {
             Optional<Person> personToEdit = personRepository.findById(selections.get().get(0));// for multiple chosen people option, we take first
-//            model.addAttribute("person", personToEdit);
+            model.addAttribute("person", personToEdit);
         }
         return "redirect:people";
     }

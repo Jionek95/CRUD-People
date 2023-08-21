@@ -27,7 +27,7 @@ public class PeopleController {
     }
 
     @ModelAttribute("person")
-    public Person getPerson(){
+    public Person showPerson(){
         return new Person();
     }
 

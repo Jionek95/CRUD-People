@@ -11,8 +11,20 @@ public class CrudPeopleApplication implements WebMvcConfigurer {
 		SpringApplication.run(CrudPeopleApplication.class, args);
 	}
 
-//	@GetMapping("/")
-//	public String hello(){
-//		return "Hello Here as well";
-//	}
+	@Bean
+	public LocaleResolver localeResolver(){
+		SessionLocaleResolver slr = new SessionLocaleResolver();
+		slr.setDefaultLocale(new Locale("en", "US"));
+		return slr;
+	}
+
+	@Bean
+	public LocaleChangeInterceptor localeChangeInterceptor(){
+		return new LocaleChangeInterceptor();
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(localeChangeInterceptor());
+	}
 }

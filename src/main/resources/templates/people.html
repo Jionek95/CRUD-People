@@ -10,15 +10,15 @@
 </head>
 
 <div class="col-md-8 col-md-9 col-sm-11 mx-auto mt-4 mb-5">
-    <h2>People List</h2>
+    <h2 th:text="#{people.table.title}">People List</h2>
     <form method="post">
         <table class="table table-bordered table-sm my-2">
             <thead>
             <tr>
                 <th scope="col">Select</th>
                 <th scope="col">ID</th>
-                <th scope="col">FirstName</th>
-                <th scope="col">LastName</th>
+                <th scope="col" th:text="#{people.table.firstName}">FirstName</th>
+                <th scope="col" th:text="#{people.table.lastName}">LastName</th>
                 <th scope="col">DOB</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Email</th>

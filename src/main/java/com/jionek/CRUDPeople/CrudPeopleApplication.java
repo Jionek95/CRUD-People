@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@RestController
 @SpringBootApplication
-public class CrudPeopleApplication {
+public class CrudPeopleApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudPeopleApplication.class, args);

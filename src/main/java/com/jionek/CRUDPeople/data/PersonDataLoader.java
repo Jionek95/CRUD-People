@@ -5,7 +5,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -19,8 +18,7 @@ public class PersonDataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (personRepository.count() == 0) {
-            List<Person> groupOfPeople =
-                      new ArrayList<>();
+            List<Person> groupOfPeople = List.of();
 //                    List.of(
 //                    new Person(null, "Jake", "Joke", LocalDate.of(1950, 2, 24), new BigDecimal(20000), "jake@joke.com"),
 //                    new Person(null, "Sarah", "Smith", LocalDate.of(1960, 3, 23), new BigDecimal(30000), "sarah@smith.com"),

@@ -82,7 +82,13 @@
             <div id="validationEmail" class="invalid-feedback" th:errors="*{email}">
                 Please enter valid data.
             </div>
-            <small id="infoToData" class="form-text text-muted mt-2">We'll never share your data with anyone.</small>
+        </div>
+        <div>
+            <label for="file" class="font-weight-bold">Photo File</label>
+            <input type="file" class="form-control form-control-sm" id="file" th:field="*{fileName}">
+        </div>
+        <div class="mb-2">
+            <small id="infoToData" class="form-text text-muted">We'll never share your data with anyone.</small>
         </div>
 
         <input type="hidden" th:field="*{id}">

@@ -38,7 +38,7 @@
                 <th scope="row" th:text="${persona.id}">1</th>
                 <td th:text="${persona.firstName}">Mark</td>
                 <td th:text="${persona.lastName}">Otto</td>
-                <td th:text="${#temporals.format(persona.dob, 'yyyy MMMM dd', T(java.util.Locale).US)}">@mdo</td>
+                <td th:text="${#temporals.format(persona.dob, 'MMMM dd, yyyy', T(java.util.Locale).US)}">@mdo</td>
                 <td th:text="${{persona.salary}}">@mdo</td>
                 <td th:text="${persona.email}" >Mark</td>
                 <td th:text="${persona.fileName}" >Mark</td>

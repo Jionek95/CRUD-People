@@ -19,9 +19,11 @@ import java.util.Optional;
 public class PeopleController {
 
    private PersonRepository personRepository;
+   private FileStorageRepository fileStorageRepository;
 
-    public PeopleController(PersonRepository personRepository) {
+    public PeopleController(PersonRepository personRepository, FileStorageRepository fileStorageRepository) {
         this.personRepository = personRepository;
+        this.fileStorageRepository = fileStorageRepository;
     }
 
     @ModelAttribute("groupOfPeople")

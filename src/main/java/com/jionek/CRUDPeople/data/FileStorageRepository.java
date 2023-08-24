@@ -12,8 +12,8 @@ import java.nio.file.Path;
 @Repository
 public class FileStorageRepository {
 
-//    @Value("${STORAGE_FOLDER}")
-//    private String storageFolder;
+    @Value("${STORAGE_FOLDER}")
+    private String storageFolder;
 
     public void save(String originalFilename, InputStream inputStream){
         try {

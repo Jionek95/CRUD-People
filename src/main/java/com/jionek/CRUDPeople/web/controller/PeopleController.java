@@ -44,8 +44,8 @@ public class PeopleController {
     @PostMapping
     public String savePerson(@Valid Person person, Errors errors, @RequestParam MultipartFile fileName){
         log.info(person);
-        log.info("File name: " + fileName.getOriginalFilename());
-        log.info("File size: " + fileName.getSize());
+        log.info("File name: " + photoFile.getOriginalFilename());
+        log.info("File size: " + photoFile.getSize());
         log.info("Errors: " + errors);
         if (!errors.hasErrors()) {
             personRepository.save(person);

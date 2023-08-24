@@ -22,6 +22,5 @@ public class FileStorageRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     };
 }

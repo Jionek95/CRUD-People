@@ -1,6 +1,7 @@
 package com.jionek.CRUDPeople.web.controller;
 
 import com.jionek.CRUDPeople.business.model.Person;
+import com.jionek.CRUDPeople.data.FileStorageRepository;
 import com.jionek.CRUDPeople.data.PersonRepository;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
@@ -10,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,13 +44,14 @@ public class PeopleController {
     }
 
     @PostMapping
-    public String savePerson(@Valid Person person, Errors errors, @RequestParam MultipartFile fileName){
+    public String savePerson(@Valid Person person, Errors errors, @RequestParam("fileName") MultipartFile photoFile) throws IOException {
         log.info(person);
         log.info("File name: " + photoFile.getOriginalFilename());
         log.info("File size: " + photoFile.getSize());
         log.info("Errors: " + errors);
         if (!errors.hasErrors()) {
             personRepository.save(person);
+            fileStorageRepository.save(photoFile.getOriginalFilename(), photoFile.getInputStream());
             return "redirect:people";
         }
         return "people";

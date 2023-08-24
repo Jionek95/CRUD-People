@@ -37,8 +37,11 @@ public class PeopleController {
     }
 
     @PostMapping
-    public String savePerson(@Valid Person person, Errors errors){
-        System.out.println(person);
+    public String savePerson(@Valid Person person, Errors errors, @RequestParam MultipartFile fileName){
+        log.info(person);
+        log.info("File name: " + fileName.getOriginalFilename());
+        log.info("File size: " + fileName.getSize());
+        log.info("Errors: " + errors);
         if (!errors.hasErrors()) {
             personRepository.save(person);
             return "redirect:people";

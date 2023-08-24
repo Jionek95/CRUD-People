@@ -49,7 +49,7 @@
     </form>
 
     <h4>Add Person</h4>
-    <form th:object="${person}" method="post" novalidate>
+    <form th:object="${person}" method="post" novalidate enctype="multipart/form-data">
         <div class="form-group">
             <label for="firstName" class="font-weight-bold">First Name</label>
             <input type="text" class="form-control" id="firstName" th:field="*{firstName}" th:errorclass="is-invalid" aria-describedby="firstNameHelp" placeholder="Enter first name">

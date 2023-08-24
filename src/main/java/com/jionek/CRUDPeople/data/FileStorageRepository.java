@@ -14,14 +14,14 @@ public class FileStorageRepository {
 
 //    @Value("${STORAGE_FOLDER}")
 //    private String storageFolder;
-//
-//    public void save(String originalFilename, InputStream inputStream){
-//        try {
-//            Path filePath = Path.of(storageFolder).resolve(originalFilename).normalize();
-//            Files.copy(inputStream, filePath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    };
+
+    public void save(String originalFilename, InputStream inputStream){
+        try {
+            Path filePath = Path.of(storageFolder).resolve(originalFilename).normalize();
+            Files.copy(inputStream, filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    };
 }

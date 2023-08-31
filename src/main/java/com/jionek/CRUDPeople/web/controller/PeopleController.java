@@ -23,7 +23,10 @@ import java.util.Optional;
 @Log4j2
 public class PeopleController {
 
-   private PersonRepository personRepository;
+    public static final String DISPO = """
+             attachment; filename="%s"
+            """;
+    private PersonRepository personRepository;
    private FileStorageRepository fileStorageRepository;
 
     public PeopleController(PersonRepository personRepository, FileStorageRepository fileStorageRepository) {
@@ -48,12 +51,9 @@ public class PeopleController {
 
     @GetMapping("/images/{resourcePath}")
     public ResponseEntity<Resource> getResource(@PathVariable String resourcePath){
-        String dispo = """
-                 attachment; filename="%s"
-                """;
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, String.format(dispo, resourcePath))
+                .header(HttpHeaders.CONTENT_DISPOSITION, String.format(DISPO, resourcePath))
                 .body(fileStorageRepository.findByName(resourcePath));
     }
 

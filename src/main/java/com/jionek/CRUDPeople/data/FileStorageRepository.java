@@ -1,11 +1,14 @@
 package com.jionek.CRUDPeople.data;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -22,5 +25,15 @@ public class FileStorageRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    };
+    }
+
+    public Resource findByName(String fileName){
+        try {
+            Path filePath = Path.of(storageFolder).resolve(fileName).normalize();
+            return new UrlResource(filePath.toUri());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

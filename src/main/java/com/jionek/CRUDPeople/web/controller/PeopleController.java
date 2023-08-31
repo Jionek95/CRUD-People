@@ -5,6 +5,9 @@ import com.jionek.CRUDPeople.data.FileStorageRepository;
 import com.jionek.CRUDPeople.data.PersonRepository;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -41,6 +44,17 @@ public class PeopleController {
     @GetMapping
     public String showPeoplePage(){
         return "people";
+    }
+
+    @GetMapping("/images/{resourcePath}")
+    public ResponseEntity<Resource> getResource(@PathVariable String resourcePath){
+        String dispo = """
+                 attachment; filename="%s"
+                """;
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, String.format(dispo, resourcePath))
+                .body(fileStorageRepository.findByName(resourcePath));
     }
 
     @PostMapping

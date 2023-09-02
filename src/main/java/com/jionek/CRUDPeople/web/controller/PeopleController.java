@@ -60,15 +60,21 @@ public class PeopleController {
     }
 
     @PostMapping
-    public String savePerson(@Valid Person person, Errors errors, @RequestParam("fileName") MultipartFile photoFile) throws IOException {
+    public String savePerson(Model model, @Valid Person person, Errors errors, @RequestParam("fileName") MultipartFile photoFile) throws IOException {
         log.info(person);
         log.info("File name: " + photoFile.getOriginalFilename());
         log.info("File size: " + photoFile.getSize());
         log.info("Errors: " + errors);
         if (!errors.hasErrors()) {
-            fileStorageRepository.save(photoFile.getOriginalFilename(), photoFile.getInputStream());
-            personRepository.save(person);
-            return "redirect:people";
+            try {
+//                fileStorageRepository.save(photoFile.getOriginalFilename(), photoFile.getInputStream());
+//                personRepository.save(person);
+                personService.save(person, photoFile.getInputStream());
+                return "redirect:people";
+            } catch (StorageException e) {
+                model.addAttribute("errorMsg", "System is currently unable to accept photo at the time");
+                return "people";
+            }
         }
         return "people";
     }

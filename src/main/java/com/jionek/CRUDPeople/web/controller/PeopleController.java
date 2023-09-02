@@ -27,11 +27,13 @@ public class PeopleController {
              attachment; filename="%s"
             """;
     private PersonRepository personRepository;
-   private FileStorageRepository fileStorageRepository;
+    private FileStorageRepository fileStorageRepository;
+    private PersonService personService;
 
-    public PeopleController(PersonRepository personRepository, FileStorageRepository fileStorageRepository) {
+    public PeopleController(PersonRepository personRepository, FileStorageRepository fileStorageRepository, PersonService personService) {
         this.personRepository = personRepository;
         this.fileStorageRepository = fileStorageRepository;
+        this.personService = personService;
     }
 
     @ModelAttribute("groupOfPeople")

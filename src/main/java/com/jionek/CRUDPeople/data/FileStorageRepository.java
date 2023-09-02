@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,5 +34,17 @@ public class FileStorageRepository {
         } catch (MalformedURLException e) {
            throw new StorageException(e);
         }
+    }
+
+    public void deleteAllByNames(Iterable<String> fileNames) {
+        try {
+            for (String originalFilename : fileNames) {
+                Path filePath = Path.of(storageFolder).resolve(originalFilename).normalize();
+                Files.deleteIfExists(filePath);
+            }
+        } catch (IOException e) {
+            throw new StorageException(e);
+        }
+
     }
 }

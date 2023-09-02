@@ -64,8 +64,8 @@ public class PeopleController {
         log.info("File size: " + photoFile.getSize());
         log.info("Errors: " + errors);
         if (!errors.hasErrors()) {
-            personRepository.save(person);
             fileStorageRepository.save(photoFile.getOriginalFilename(), photoFile.getInputStream());
+            personRepository.save(person);
             return "redirect:people";
         }
         return "people";

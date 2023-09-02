@@ -85,7 +85,8 @@ public class PeopleController {
     public String deletePerson(@RequestParam("checkboxes") Optional<List<Long>> selections){
         log.info(selections);
         if (selections.isPresent()) {
-            personRepository.deleteAllById(selections.get());
+//            personRepository.deleteAllById(selections.get());
+            personService.deleteAllById(selections.get());
         }
         return "redirect:people";
     }

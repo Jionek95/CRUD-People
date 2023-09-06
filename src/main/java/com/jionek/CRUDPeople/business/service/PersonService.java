@@ -40,11 +40,12 @@ public class PersonService {
     }
 
     public void deleteAllById(Iterable<Long> ids) {
-        Iterable<Person> peopleToDelete = personRepository.findAllById(ids);
-        Stream<Person> peopleStream = StreamSupport.stream(peopleToDelete.spliterator(), true);
-        Set<String> fileNames = peopleStream
-                .map(Person::getFileName)
-                .collect(Collectors.toSet());
+//        Iterable<Person> peopleToDelete = personRepository.findAllById(ids);
+//        Stream<Person> peopleStream = StreamSupport.stream(peopleToDelete.spliterator(), true);
+//        Set<String> fileNames = peopleStream
+//                .map(Person::getFileName)
+//                .collect(Collectors.toSet());
+        Set<String> fileNames = personRepository.findFileNameByIds(ids);
         personRepository.deleteAllById(ids);
         storageRepository.deleteAllByNames(fileNames);
     }

@@ -11,7 +11,7 @@ import java.util.Set;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT file_name FROM person WHERE id IN: ids")
+    @Query(nativeQuery = true, value = "SELECT file_name FROM person WHERE id IN :ids")
     public Set<String> findFileNameByIds(@Param("ids") Iterable<Long> ids);
 
 }

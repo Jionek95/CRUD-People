@@ -4,6 +4,8 @@ import com.jionek.CRUDPeople.business.model.Person;
 import com.jionek.CRUDPeople.data.FileStorageRepository;
 import com.jionek.CRUDPeople.data.PersonRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
@@ -37,6 +39,10 @@ public class PersonService {
 
     public Iterable<Person> findAll() {
         return personRepository.findAll();
+    }
+
+    public Page<Person> findAll(Pageable pageable) {
+        return personRepository.findAll(pageable);
     }
 
     public void deleteAllById(Iterable<Long> ids) {

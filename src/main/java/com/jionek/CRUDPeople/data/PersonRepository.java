@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
+public interface PersonRepository extends CrudRepository<Person, Long>, PagingAndSortingRepository<Person, Long> {
 
     @Query(nativeQuery = true, value = "SELECT file_name FROM person WHERE id IN :ids")
     public Set<String> findFileNameByIds(@Param("ids") Iterable<Long> ids);

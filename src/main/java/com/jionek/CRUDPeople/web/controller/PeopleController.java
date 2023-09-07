@@ -8,6 +8,9 @@ import com.jionek.CRUDPeople.exception.StorageException;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,8 +42,8 @@ public class PeopleController {
     }
 
     @ModelAttribute("groupOfPeople")
-    public Iterable<Person> getPeople(){
-        return personService.findAll();
+    public Page<Person> getPeople(@PageableDefault(size = 5) Pageable pageable){
+        return personService.findAll(pageable);
     }
 
     @ModelAttribute("person")

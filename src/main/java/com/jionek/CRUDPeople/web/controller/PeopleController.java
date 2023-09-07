@@ -40,7 +40,7 @@ public class PeopleController {
 
     @ModelAttribute("groupOfPeople")
     public Iterable<Person> getPeople(){
-        return personRepository.findAll();
+        return personService.findAll();
     }
 
     @ModelAttribute("person")

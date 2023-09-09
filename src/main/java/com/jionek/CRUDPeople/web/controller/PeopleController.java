@@ -42,7 +42,7 @@ public class PeopleController {
     }
 
     @ModelAttribute("groupOfPeople")
-    public Page<Person> getPeople(@PageableDefault(size = 3) Pageable pageable){
+    public Page<Person> getPeople(@PageableDefault(size = 10) Pageable pageable){
         return personService.findAll(pageable);
     }
 

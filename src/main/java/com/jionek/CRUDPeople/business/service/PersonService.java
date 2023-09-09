@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Optional;
@@ -60,13 +61,18 @@ public class PersonService {
     }
 
     public void importCSV(InputStream csvFileStream) {
-        ZipInputStream zipInputStream = new ZipInputStream(csvFileStream);
-        InputStreamReader inputStreamReader = new InputStreamReader(zipInputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        bufferedReader.lines()
-                .skip(1)
-                .limit(20)
-                .map(Person::parse)
-                .forEach(personRepository::save);
+        try {
+            ZipInputStream zipInputStream = new ZipInputStream(csvFileStream);
+            zipInputStream.getNextEntry();
+            InputStreamReader inputStreamReader = new InputStreamReader(zipInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            bufferedReader.lines()
+                    .skip(1)
+                    .limit(20)
+                    .map(Person::parse)
+                    .forEach(personRepository::save);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -84,7 +84,7 @@ public class PeopleController {
         return "people";
     }
 
-    @PostMapping(params = "deleteOperation=true")
+    @PostMapping(params = "action=delete")
     public String deletePerson(@RequestParam("checkboxes") Optional<List<Long>> selections){
         log.info(selections);
         if (selections.isPresent()) {
@@ -94,7 +94,7 @@ public class PeopleController {
         return "redirect:people";
     }
 
-    @PostMapping(params = "editOperation=true")
+    @PostMapping(params = "action=edit")
     public String editPerson(@RequestParam("checkboxes") Optional<List<Long>> selections, Model model){
         log.info(selections);
         if (selections.isPresent()) {
@@ -102,5 +102,10 @@ public class PeopleController {
             model.addAttribute("person", personToEdit);
         }
         return "people";
+    }
+
+    @PostMapping(params = "action=import")
+    public String importCSV(){
+        return "redirect:people";
     }
 }

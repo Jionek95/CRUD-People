@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @AllArgsConstructor
@@ -42,5 +43,10 @@ public class Person {
 
     private String fileName;
 
+    public static Person parse(String line) {
+        String[] fields = line.split(",\\s*");
+        LocalDate dob = LocalDate.parse(fields[10], DateTimeFormatter.ofPattern("M/d/yyyy"));
+        return new Person(null, fields[2], fields[4], dob, new BigDecimal(fields[25]), fields[6], null);
+    }
 }
 

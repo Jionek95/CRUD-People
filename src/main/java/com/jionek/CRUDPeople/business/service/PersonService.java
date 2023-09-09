@@ -64,6 +64,9 @@ public class PersonService {
         InputStreamReader inputStreamReader = new InputStreamReader(zipInputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         bufferedReader.lines()
-                .map(Person::parse);
+                .skip(1)
+                .limit(20)
+                .map(Person::parse)
+                .forEach(personRepository::save);
     }
 }

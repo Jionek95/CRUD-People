@@ -107,7 +107,12 @@ public class PeopleController {
     @PostMapping(params = "action=import")
     public String importCSV(@RequestParam("csvFile") MultipartFile csvFile){
         log.info("File name: " + csvFile.getOriginalFilename());
-        log.info("File size" + csvFile.getSize());
+        log.info("File size: " + csvFile.getSize());
+        try {
+            personService.importCSV(csvFile.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:people";
     }
 }

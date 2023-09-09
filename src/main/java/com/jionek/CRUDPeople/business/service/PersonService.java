@@ -8,12 +8,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import java.util.zip.ZipInputStream;
 
 @Service
 public class PersonService {
@@ -54,5 +57,13 @@ public class PersonService {
         Set<String> fileNames = personRepository.findFileNameByIds(ids);
         personRepository.deleteAllById(ids);
         storageRepository.deleteAllByNames(fileNames);
+    }
+
+    public void importCSV(InputStream csvFileStream) {
+        ZipInputStream zipInputStream = new ZipInputStream(csvFileStream);
+        InputStreamReader inputStreamReader = new InputStreamReader(zipInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        bufferedReader.lines()
+                .map(Person::parse)
     }
 }

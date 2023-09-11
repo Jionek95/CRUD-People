@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Repository
 public class FileStorageRepository {
@@ -36,9 +38,9 @@ public class FileStorageRepository {
         }
     }
 
-    public void deleteAllByNames(Iterable<String> fileNames) {
+    public void deleteAllByNames(Collection<String> fileNames) {
         try {
-            for (String originalFilename : fileNames) {
+            for (String originalFilename : fileNames.stream().filter(f-> f!= null).collect(Collectors.toSet())) {
                 Path filePath = Path.of(storageFolder).resolve(originalFilename).normalize();
                 Files.deleteIfExists(filePath);
             }

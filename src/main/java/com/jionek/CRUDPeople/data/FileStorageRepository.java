@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Repository
 public class FileStorageRepository {
 
-    @Value("${STORAGE_FOLDER}")
+    @Value("${STORAGE_PHOTO_FOLDER}")
     private String storageFolder;
 
     public void save(String originalFilename, InputStream inputStream){

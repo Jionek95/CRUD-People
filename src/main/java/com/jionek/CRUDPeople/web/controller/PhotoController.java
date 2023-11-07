@@ -16,7 +16,7 @@
 //import java.util.Optional;
 //
 //@Controller
-//@RequestMapping("/photo")
+//@RequestMapping("/photo/")
 //@Log4j2
 //public class PhotoController {
 //
@@ -35,13 +35,4 @@
 //                .body(fileStorageRepository.findByName(resourcePath));
 //    }
 //
-//    @PostMapping(params = "action=showWithPhoto")
-//    public String showPersonWithPhoto(@RequestParam("checkboxes") Optional<List<Long>> selections, Model model){
-//        log.info(selections);
-//        if (selections.isPresent()) {
-//            Optional<Person> personToShow = personRepository.findById(selections.get().get(0));     // for multiple chosen people option, we take first
-//            model.addAttribute("person", personToShow);
-//        }
-//        return "photo";
-//    }
 //}
